@@ -1,0 +1,14 @@
+<p>doc-list works!</p>
+
+<p>Read Local JSON file with document data</p>
+
+<table id="document">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    <tr *ngFor="let document of documentData">
+        <td>{{document.name}}</td>
+        <td>{{document.email}}</td>
+    </tr>
+</table>
