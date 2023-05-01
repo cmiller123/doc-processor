@@ -9,8 +9,10 @@ import { Document } from '../model/document';
 })
 export class DocListComponent implements OnInit {
 
+  displayedColumns: string[] = ['name', 'length', 'version', 'select'];
   documentData: any;
   document: any;
+  documentName: any;
   file: any;
 
   constructor(private documentService: DocumentService) {}
@@ -27,7 +29,8 @@ export class DocListComponent implements OnInit {
 
   getDocument(document: Document): void {
     console.log("Getting Documents...")
-    this.documentService.getDocument(document.name).subscribe(data => {
+    this.documentName = document.name;
+    this.documentService.getDocument(this.documentName).subscribe(data => {
         this.document = data;
     });
   }
@@ -46,6 +49,11 @@ export class DocListComponent implements OnInit {
         data => console.log('success')
       );
     }
+  }
+
+  clear(): void {
+    this.documentName = "";
+    this.document = undefined;
   }
 
 }
