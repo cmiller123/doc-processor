@@ -1,14 +1,25 @@
-<p>doc-list works!</p>
+<h2>FILE UPLOAD</h2>
 
-<p>Read Local JSON file with document data</p>
+<p>Choose a file to upload</p>
 
+<input type="file" (change)="onFileSelected($event)">
+<button (click)="uploadFile()">Upload</button>
+<button (click)="getAllDocuments()">Refresh</button>
 <table id="document">
     <tr>
         <th>Name</th>
-        <th>Email</th>
+        <th>Version</th>
+        <th>Length</th>
     </tr>
     <tr *ngFor="let document of documentData">
         <td>{{document.name}}</td>
-        <td>{{document.email}}</td>
+        <td>{{document.version}}</td>
+        <td>{{document.length}}</td>
+        <button (click)="getDocument(document)">Get Document</button>
     </tr>
 </table>
+<div *ngIf="document !== undefined">
+    <code>
+        <pre>{{document | json}}</pre>
+    </code>
+</div>
